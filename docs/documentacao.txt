@@ -1,0 +1,16 @@
+  "dependencies": {
+    "dotenv": "^18.0.10", // uso e criação de variáveis de ambiente
+    "ejs": "^7.0.2", // template engine
+    "express": "^5.3.0", // criação do servidor e api
+    "express-session": "^1.19.0", // guardar a sessão do usuário
+    "mysql2": "^3.24.6" // interagir com o banco
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14" // resetar o servidor a cada alteração
+  }
+
+  "npm i" pra instalar
+
+
+
+  
