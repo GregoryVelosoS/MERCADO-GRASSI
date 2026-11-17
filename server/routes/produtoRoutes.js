@@ -5,10 +5,10 @@ const router = express.Router();
 // IMPORTA O CONTROLLER
 const produtoController = require("../controllers/produtoController.js")
 
-// rota geral
+// CRUD
+// CHAMA A PÁGINA 
 router.get("/", produtoController.renderizarCadastro)
-
-// rota teste
-router.get("/criar", produtoController.cadastrar)
+// ENVIA AS INFORMAÇÕES DE CADASTRO
+router.post("/cadastrar", produtoController.cadastrar)
 
 module.exports = router

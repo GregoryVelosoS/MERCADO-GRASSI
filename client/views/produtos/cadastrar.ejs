@@ -1,0 +1,75 @@
+<!-- IMPORTAR O HEADER -->
+<%- include('../partials/header') %> 
+
+<main class="flex-grow-1 ">
+
+    <h1>ESTOU NA PÁGINA DE CADASTRO</h1>
+
+    <div class="container">
+        <!-- CRIA O FORMULÁRIO E MANDA PARA A ROTA CORRETA -->
+        <form action="/produtos/cadastrar" method="post">
+            
+            <!-- CAIXINHA CÓDIGO-->
+            <div class="form-group">
+                <label for="codigo_interno"> Código interno </label>
+                <input type="text" id="codigo_interno" name="codigo_interno" class="form-control" required>
+            </div>
+
+            <!-- CAIXINHA NOME-->
+            <div class="form-group">
+                <label for="nome"> Nome </label>
+                <input type="text" id="nome" name="nome" class="form-control" required>
+            </div>
+
+            <!-- CAIXINHA IMAGEM-->
+            <div class="form-group">
+                <label for="imagem"> Foto </label>
+                <input type="text" id="imagem" name="imagem" class="form-control" required>
+            </div>
+
+            <!-- CAIXINHA CATEGORIA-->
+            <div class="form-group">
+                <label for="categoria"> Categoria </label>
+                <select name="categoria" id="categoria" class="form-control" required>
+                    <option value="fruta"> Fruta </option>
+                    <option value="legume"> Legume </option>
+                    <option value="verdura"> Verdura </option>
+                </select>
+            </div>
+            <!-- CAIXINHA UNIDADE VENDA-->
+            <div class="form-group">
+                <label for="unidade_venda"> Unidade Venda </label>
+                <select name="unidade_venda" id="unidade_venda" class="form-control" required>
+                    <option value="l"> Litro </option>
+                    <option value="kg"> Kilo </option>
+                    <option value="unidade"> Unidade </option>
+                </select>
+            </div>
+
+            <!-- CAIXINHA PREÇO-->
+            <div class="form-group">
+                <label for="preco"> Preço </label>
+                <input type="text" id="preco" name="preco" class="form-control" required>
+            </div>
+
+            <!-- CAIXINHA PRIVACIDADE-->
+            <div class="form-group">
+                <label for="esta_ativo"> Visibilidade no sistema </label>
+                <select name="esta_ativo" id="esta_ativo" class="form-control" required>
+                    <option value="1"> Ativo </option>
+                    <option value="0"> Desativado </option>
+                </select>
+            </div>
+
+            <!-- BOTÃO DE ENVIO -->
+            <button type="submit" class="btn btn-success full-width-btn mt-15">
+                Cadastrar produto
+            </button>
+        </form>
+    </div>
+
+</main>
+
+
+<!-- IMPORTAR O FOOTER -->
+<%- include('../partials/footer') %> 

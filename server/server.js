@@ -16,6 +16,10 @@ app.set("views", path.join(__dirname, "../client/views"))
 // DEIXA A PASTA PUBLIC VISÍVEL AO EXPRESS
 app.use(express.static(path.join(__dirname,"../client/public")))
 
+// MIDDLEWARE PARA ENTENDER O JSON
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 // ROTA INICIAL DO SERVIDOR
 app.get("/", (req, res) => {
   res.render('index')
