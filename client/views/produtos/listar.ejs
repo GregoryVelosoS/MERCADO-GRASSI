@@ -1,12 +1,72 @@
 <!-- IMPORTAR O HEADER -->
-<%- include('partials/header') %> 
+<%- include('../partials/header') %> 
 
 <main class="flex-grow-1">
 
-    <h1>ESTOU NA PÁGINA DE LISTAR</h1>
+    <h1 class="text-center my-3">
+        ESTOU NA PÁGINA DE LISTAR
+    </h1>
 
+    <!-- TABELA DE PRODUTOS -->
+    <table class="table container text-center table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Código Interno</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Medida</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Visibilidade</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- LAÇO DE REPETIÇÃO, CRIANDO UMA LINHA NOVA PARA CADA PRODUTO -->
+        <% produtos.forEach(prod => { %>
+         <tr>
+            <td> <%= prod.id_produto %></td>
+            <td> <%= prod.codigo_interno %></td>
+            <td> <%= prod.nome %></td>
+            <td class="badge badge-outline theme-success"> 
+                <%= prod.categoria %>
+            </td>
+            <td> <%= prod.preco %></td>
+            <td> <%= prod.unidade_venda %></td>
+            <td> 
+               <img src="<%= prod.imagem %>" width="64" height="64">
+            </td>
+            <td> <%= prod.esta_ativo %></td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <!-- BOTÃO DE VER -->
+                    <a href="/produtos/listar">
+                        <button type="button" class="btn-solid theme-success">
+                        Ver
+                        </button>
+                    </a>
+                    <!-- BOTÃO DE EDITAR -->
+                    <a href="">
+                        <button type="button" class="btn-solid theme-warning">
+                            Editar
+                        </button>
+                    </a>
+                    <!-- BOTÃO DE EXCLUIR -->
+                    <form action="/produtos/excluir/<%= prod.id_produto %>" method="post" 
+                        onsubmit="return confirm('Deseja realmente excluir?')">
+                        <button type="submit" class="btn-solid theme-danger">
+                            Excluir
+                        </button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        <% }) %>        
+    </tbody>
+    </table>
 </main>
 
 
 <!-- IMPORTAR O FOOTER -->
-<%- include('partials/footer') %> 
+<%- include('../partials/footer') %> 

@@ -14,5 +14,24 @@ module.exports = {
 
         // RETORNAR O ID DO PRODUTO INSERIDO
         return resultado.insertId
+    },
+    // READ
+    listarProdutos: async () => {
+        // QUERY PARA FAZER A OPERAÇÃO NO BANCO
+        const sql = `SELECT * FROM tb_produtos`
+
+        // FAZ A OPERAÇÃO, E RETORNA A LISTA DE PRODUTOS 
+        const [resultado] = await db.execute(sql)
+
+        // RETORNAR A LISTA DE PRODUTOS
+        return resultado
+    },
+    // DELETE 
+    excluirProduto: async (id) =>{
+        // QUERY PARA FAZER A OPERAÇÃO NO BANCO
+        const sql = `DELETE FROM tb_produtos WHERE id_produto = ?` 
+
+        // FAZ A OPERAÇÃO
+        await db.execute(sql,[id])
     }
 }

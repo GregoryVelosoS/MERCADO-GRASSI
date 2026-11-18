@@ -1,18 +1,19 @@
 <!-- IMPORTAR O HEADER -->
 <%- include('partials/header') %> 
 
-<main class="flex-grow-1">
-    <h1>OPS, ALGO DEU ERRADO </h1>
+<main class="flex-grow-1 container">
+    <h1 class="text-center my-3">OPS, ALGO DEU ERRADO </h1>
+    
     <!-- MOSTRA A MENSAGEM DE ERRO -->
-    <p class="fs-2 bold">
-        <%= mensagem %>
-    </p>
+    <h2 class="fs-1 bold bg-warning p-2">
+        Erro: <%= mensagem %>
+    </h2>
 
     <!-- MOSTRA O ERRO, SE HOUVER -->
     <% if (typeof erro !== 'undefined' && erro) { %>
-        <p class="fs-2 bold">
+        <h3 class="fs-2 bold bg-danger p-2 fg-white">
             <%= erro %>
-        </p>
+        </h3>
     <% } %>
 
 </main>

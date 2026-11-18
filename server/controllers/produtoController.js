@@ -28,5 +28,38 @@ module.exports = {
         console.log(erro);
         res.render("erro", {erro, mensagem: "Erro ao cadastrar o produto"})
        }
+    },
+    // PEDE A LISTA DE PRODUTOS PRO MODEL, E RENDERIZA A PÁGINA COM A LISTA 
+    listarTodosProdutos: async (req, res) => {
+        try{
+
+            // SOLICITA AO MODEL A LISTA
+            const produtos = await produtoModel.listarProdutos()
+
+            // RENDERIZA A PÁGINA DE LISTA, MANDANDO A LISTA PRA ELA 
+            res.render("produtos/listar", { produtos })
+        }
+        catch(erro){
+            console.log(erro);
+            res.render("erro", {erro, mensagem: "Erro ao listar os produtos"})
+        }
+    },
+    // EXCLUIR UM PRODUTO
+    excluirProduto: async (req, res) => {
+        try{
+            // PEGA O ID, VINDO DA URL
+            const id = req.params.id;
+
+            // SOLICITA AO MODEL A EXCLUSÃO
+            await produtoModel.excluirProduto(id)
+
+            // REDIRECIONA O USUÁRIO
+            res.redirect("/produtos/listar")
+
+        }
+        catch(erro){
+            console.log(erro);
+            res.render("erro", {erro, mensagem: "Erro ao excluir um produto"})
+        }
     }
 }
