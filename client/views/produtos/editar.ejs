@@ -1,12 +1,122 @@
 <!-- IMPORTAR O HEADER -->
-<%- include('partials/header') %> 
+<%- include('../partials/header') %>
 
 <main class="flex-grow-1">
+  <h1 class="text-center my-3">ESTOU NA PÁGINA DE EDIÇÃO</h1>
 
-    <h1>ESTOU NA PÁGINA DE EDITAR </h1>
+  <div class="container">
+    <!-- CRIA O FORMULÁRIO E MANDA PARA A ROTA CORRETA -->
+    <form action="/produtos/editar/<%= produto.id_produto %>" 
+      method="post" 
+      onsubmit="alert('Produto <%= produto.nome %> foi editado ')">
+      <!-- CAIXINHA CÓDIGO-->
+      <div class="form-group">
+        <label for="codigo_interno"> Código interno </label>
+        <input
+          type="text"
+          id="codigo_interno"
+          name="codigo_interno"
+          class="form-control"
+          value="<%= produto.codigo_interno %>"
+          required
+        />
+      </div>
 
+      <!-- CAIXINHA NOME-->
+      <div class="form-group">
+        <label for="nome"> Nome </label>
+        <input
+          type="text"
+          id="nome"
+          name="nome"
+          class="form-control"
+          value="<%= produto.nome %>"
+          required
+        />
+      </div>
+
+      <!-- CAIXINHA IMAGEM-->
+      <div class="form-group">
+        <label for="imagem"> Foto </label>
+        <input
+          type="text"
+          id="imagem"
+          name="imagem"
+          class="form-control"
+          value="<%= produto.imagem %>"
+          required
+        />
+      </div>
+
+      <!-- CAIXINHA CATEGORIA-->
+      <div class="form-group">
+        <label for="categoria"> Categoria </label>
+        <select name="categoria" id="categoria" class="form-control" required>
+          <option value="FRUTA" <%= produto.categoria === "FRUTA" ? 'selected' : "" %> >
+            Fruta
+          </option>
+          <option value="LEGUME" <%= produto.categoria === "LEGUME" ? 'selected' : "" %>>
+            Legume
+          </option>
+          <option value="VERDURA" <%= produto.categoria === "VERDURA" ? 'selected' : "" %>>
+            Verdura
+          </option>
+        </select>
+      </div>
+      <!-- CAIXINHA UNIDADE VENDA-->
+      <div class="form-group">
+        <label for="unidade_venda"> Unidade Venda </label>
+        <select
+          name="unidade_venda"
+          id="unidade_venda"
+          class="form-control"
+          required
+        >
+          <option value="MACO" <%= produto.unidade_venda === "MACO" ? 'selected' : "" %>>
+            MAÇO
+          </option>
+          <option value="KG" <%= produto.unidade_venda === "KG" ? 'selected' : "" %>>
+            Kilo
+          </option>
+          <option value="UNIDADE" <%= produto.unidade_venda === "UNIDADE" ? 'selected' : "" %>>
+            Unidade
+          </option>
+        </select>
+      </div>
+
+      <!-- CAIXINHA PREÇO-->
+      <div class="form-group">
+        <label for="preco"> Preço </label>
+        <input
+          type="number"
+          id="preco"
+          name="preco"
+          class="form-control"
+          value="<%= produto.preco %>"
+          required
+        />
+      </div>
+
+      <!-- CAIXINHA PRIVACIDADE-->
+      <div class="form-group">
+        <label for="esta_ativo"> Visibilidade no sistema </label>
+        <select name="esta_ativo" id="esta_ativo" class="form-control" required>
+          <option value="1" <%= produto.esta_ativo === "1" ? 'selected' : "" %>>
+            Ativo
+          </option>
+          <option value="0" <%= produto.esta_ativo === "0" ? 'selected' : "" %>>
+            Desativado
+          </option>
+        </select>
+      </div>
+
+      <!-- BOTÃO DE ENVIO -->
+      <button type="submit" class="btn-solid theme-primary mt-5">
+        Editar produto
+      </button>
+    </form>
+  </div>
 </main>
 
-
 <!-- IMPORTAR O FOOTER -->
-<%- include('partials/footer') %> 
+<%- include('../partials/footer') %>

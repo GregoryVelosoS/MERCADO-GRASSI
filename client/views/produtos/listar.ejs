@@ -1,12 +1,19 @@
 <!-- IMPORTAR O HEADER -->
 <%- include('../partials/header') %> 
 
-<main class="flex-grow-1">
+<main class="flex-grow-1 container ">
 
     <h1 class="text-center my-3">
         ESTOU NA PÁGINA DE LISTAR
     </h1>
 
+    <!-- BOTÃO DE CRIAR NOVO -->
+    <a href="/produtos/" >
+        <button type="button" class="btn-solid theme-accent my-3">
+            + Criar Produto 
+        </button>
+    </a>
+    
     <!-- TABELA DE PRODUTOS -->
     <table class="table container text-center table-bordered">
     <thead>
@@ -47,7 +54,7 @@
                         </button>
                     </a>
                     <!-- BOTÃO DE EDITAR -->
-                    <a href="">
+                    <a href="/produtos/editar/<%= prod.id_produto %>">
                         <button type="button" class="btn-solid theme-warning">
                             Editar
                         </button>

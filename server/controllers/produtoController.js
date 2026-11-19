@@ -61,5 +61,47 @@ module.exports = {
             console.log(erro);
             res.render("erro", {erro, mensagem: "Erro ao excluir um produto"})
         }
-    }
+    },
+
+    // ATUALIZAR
+    renderizarEditar: async (req,res) => {
+        try{
+            // PEGA O ID, VINDO DA URL
+            const idVindoDaUrl = req.params.id;
+
+            // BUSCA AS INFORMAÇÕES
+            const produto = await produtoModel.buscarPorId(idVindoDaUrl)
+
+            // RENDERIZA A PÁGINA, PASSANDO O PRODUTO COMO OBJETO
+            console.log(produto);
+            
+            res.render("produtos/editar", { produto })
+        }
+        catch(erro){
+            console.log(erro);
+            res.render("erro", {erro, mensagem: "Erro ao buscar um produto"})
+        }
+    },
+    editarProduto: async (req,res) => {
+        try{
+            // PEGA O ID, VINDO DA URL
+            const id = req.params.id;
+
+            // PEGAR AS INFORMAÇÕES DO BODY
+            const {codigo_interno, nome, categoria, unidade_venda, preco, imagem, esta_ativo } = req.body
+
+            // CONVERSÃO DO ESTADO DO PRODUTO
+            const publico_bool = esta_ativo === "1" || esta_ativo === "true"
+
+            // CHAMA O MODEL PARA ATIVAR A EXECUÇÃO NO BANCO DA FUNÇÃO DE CRIAÇÃO
+            await produtoModel.editarProduto(id, codigo_interno, nome, categoria, unidade_venda, preco, imagem, publico_bool)
+
+            // RENDERIZA A PÁGINA
+            res.redirect("/produtos/listar")
+        }
+        catch(erro){
+            console.log(erro);
+            res.render("erro", {erro, mensagem: "Erro ao editar um produto"})
+        }
+    } 
 }
